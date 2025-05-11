@@ -1,0 +1,21 @@
+name: gitleaks
+
+on:
+  push:
+    branches:
+      - '**' # Ejecutar en todos los branches
+
+jobs:
+  gitleaks-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout del código
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Ejecutar Gitleaks
+      - name: Run Gitleaks
+        uses: zricethezav/gitleaks-action@v2
+        with:
+          config: .gitleaks.toml # Cambia esto si tienes un archivo de configuración personalizado
